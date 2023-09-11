@@ -26,7 +26,7 @@ def get_info():
     current_utc_time = utc_now.strftime('%Y-%m-%dT%H:%M:%SZ')
 
     # Get GitHub URLs for the file being run and the full source code
-    file_url = "https://github.com/your_username/your_repo/blob/main/your_script.py"  # Replace with your actual GitHub URL
+    file_url = "https://github.com/ellaempire/EllaXPython/blob/main/app.py"  # Replace with your actual GitHub URL
     source_code_url = "https://github.com/ellaempire/PROJECT-1/tree/main"  # Replace with your actual GitHub URL
 
     # Create the response JSON
