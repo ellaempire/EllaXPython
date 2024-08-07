@@ -1,3 +1,5 @@
+import json
+
 def add_expense(expenses, description, amount):
     expenses.append({'description': description, 'amount': amount})
     print(f'added expense: {description}, amount:  {amount}')
@@ -12,15 +14,29 @@ def get_balance(budget, expenses):
     return budget - get_total_expenses(expenses)
 
 def budget_details(budget, expenses):
-    print(f'Total budget: {budget}')
-    print('expenses: ')
+    print(f'Total Budget: {budget}')
+    print('Expenses: ')
     for expense in expenses:
-        print(f'. {expense['description']}: {expense['amount']}')
-    print(f'Total spent: {get_total_expenses(expenses)}')
-    print(f'Remaining budget: {get_balance(budget, expenses)}')
+        print(f'- {expense['description']}: {expense['amount']}')
+    print(f'Total Spent: {get_total_expenses(expenses)}')
+    print(f'Remaining Budget: {get_balance(budget, expenses)}')
 
-
-
+def load_budget_data(filepath):
+    try:
+        with open (filepath, 'r') as file:
+            data = json.load(file)
+            return data ['main_budget'], data['expenses']
+    except (FileNotFoundError, json.JSONDecodeError):
+        return 0,[]
+    
+def save_budget_data(filepath, main_budget, expenses):
+    data = {
+        'main_budget': main_budget,
+        'expenses' : expenses
+    }
+    with open(filepath, 'w') as file:
+        json.dump(data, file, indent=4)
+    
 
 def main():
     print('welcome to budgetly')
